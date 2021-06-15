@@ -33,16 +33,17 @@ export default class Categories extends Component {
     ) : (
       <div>
         {categoriesList.map((category) => (
-          <label htmlFor="category" key={ category.id }>
-            {category.name}
+          <label htmlFor={ category.id } key={ category.id }>
             <input
               type="radio"
               name="category"
-              id="category"
+              id={ category.id }
               data-testid="category"
               value={ category.id }
               onClick={ handleChange }
             />
+            {category.name}
+            <br />
           </label>
         ))}
       </div>

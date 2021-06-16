@@ -4,22 +4,31 @@ import { Link } from 'react-router-dom';
 
 export default class CardProduct extends Component {
   render() {
-    const { product, query } = this.props;
+    const { product, query, addToCart } = this.props;
     const { title, price, thumbnail, category_id: categoryId, id } = product;
     return (
-      <Link
-        data-testid="product-detail-link"
-        to={ `/product/${query}/${categoryId}/${id}` }
-      >
-        <div data-testid="product">
-          <h3>{ title }</h3>
-          <img src={ thumbnail } alt={ title } />
-          <p>
-            R$
-            { price }
-          </p>
-        </div>
-      </Link>
+      <div>
+        <Link
+          data-testid="product-detail-link"
+          to={ `/product/${query}/${categoryId}/${id}` }
+        >
+          <div data-testid="product">
+            <h3>{ title }</h3>
+            <img src={ thumbnail } alt={ title } />
+            <p>
+              R$
+              { price }
+            </p>
+          </div>
+        </Link>
+        <button
+          data-testid="product-add-to-cart"
+          onClick={ () => addToCart(product) }
+          type="button"
+        >
+          Adicionar ao Carrinho
+        </button>
+      </div>
     );
   }
 }
@@ -33,6 +42,7 @@ CardProduct.propTypes = {
     category_id: PropTypes.string.isRequired,
   }).isRequired,
   query: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 // CardProduct.defaultProps = {

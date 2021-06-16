@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
@@ -10,10 +11,16 @@ export default class ProductDetails extends Component {
       loading: true,
       product: {},
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.searchProducts();
+  }
+
+  handleClick(product) {
+    const { addToCart } = this.props;
+    addToCart(product);
   }
 
   async searchProducts() {
@@ -42,9 +49,22 @@ export default class ProductDetails extends Component {
             {tags.map((element) => (<li key={ element }>{ element }</li>))}
           </ul>
         </label>
+
         <textarea data-testid="product-detail-evaluation" />
         <button type="button">Submit</button>
         {stars.map((value, index) => (<span key={ value }>{index + 1}</span>))}
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ () => this.handleClick(product) }
+        >
+          Adicionar ao carrinho
+        </button>
+        <Link data-testid="shopping-cart-button" to="/shoppingcart">
+          <button type="button">
+            Carrinho
+          </button>
+        </Link>
       </div>
     );
   }
@@ -58,6 +78,7 @@ ProductDetails.propTypes = {
       category: PropTypes.string,
     }),
   }),
+  addToCart: PropTypes.func.isRequired,
 };
 
 ProductDetails.defaultProps = {

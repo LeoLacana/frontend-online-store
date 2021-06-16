@@ -36,7 +36,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, query } = this.state;
     return (
       <div>
         <label htmlFor="searchInput">
@@ -68,6 +68,7 @@ export default class Home extends Component {
             <CardProduct
               key={ product.id }
               product={ product }
+              query={ query }
             />))}
       </div>
     );

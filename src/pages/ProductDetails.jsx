@@ -24,7 +24,7 @@ export default class ProductDetails extends Component {
     this.setState({
       product,
       loading: false,
-    }, () => console.log(this.state));
+    });
   }
 
   render() {

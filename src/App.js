@@ -12,12 +12,33 @@ class App extends React.Component {
       cart: [],
     };
     this.addToCart = this.addToCart.bind(this);
+    this.subQuantity = this.subQuantity.bind(this);
+    this.addQuantity = this.addQuantity.bind(this);
   }
 
   addToCart(newItem) {
     const { cart } = this.state;
+    // if (cart.includes(newItem)) return null;
     this.setState({
       cart: [...cart, newItem],
+    });
+  }
+
+  addQuantity(product) {
+    const { cart } = this.state;
+    this.setState({
+      cart: [...cart, product],
+    });
+  }
+
+  subQuantity(product) {
+    const { cart } = this.state;
+    const index = cart.indexOf(product);
+    const newCart = cart.reduce((acum, curr, i) => (
+      i === index ? acum : acum.concat(curr)), []);
+    console.log(newCart);
+    this.setState({
+      cart: newCart,
     });
   }
 
@@ -30,7 +51,12 @@ class App extends React.Component {
           <Route
             exact
             path="/shoppingcart"
-            render={ () => <ShoppingCart cart={ cart } /> }
+            render={ () => (
+              <ShoppingCart
+                cart={ cart }
+                addQuantity={ this.addQuantity }
+                subQuantity={ this.subQuantity }
+              />) }
           />
           <Route
             exact

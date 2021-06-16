@@ -1,31 +1,44 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ItemShopCart extends Component {
-  constructor() {
-    super();
-    this.state = {
-      itemQuant: 1,
-    };
-  }
-
-  addQuantity({ target }) {
-  }
-
-  subQuantity({ target }) {
-  }
-
   render() {
-    const { thumbnail, title, price } = this.props;
+    const { item, cart, addQuantity, subQuantity } = this.props;
+    const { thumbnail, title, price } = item;
+    const quantity = cart.filter((product) => product === item).length;
     return (
       <div>
-        <button>X</button>
+        <button type="button">Deletar</button>
         <img src={ thumbnail } alt={ title } />
-        <span>{ title }</span>
-        <button onClick={this.subQuantity}>-</button>
-        <span>{QUANTITY}</span>
-        <button onClick={this.addQuantity}>+</button>
-        <span>{ `R$ ${price * QUANTITY}` }</span>
+        <span data-testid="shopping-cart-product-name">{ title }</span>
+        <button
+          onClick={ () => subQuantity(item) }
+          data-testid="product-decrease-quantity"
+          type="button"
+        >
+          subtrair
+        </button>
+        <span data-testid="shopping-cart-product-quantity">{ quantity }</span>
+        <button
+          onClick={ () => addQuantity(item) }
+          data-testid="product-increase-quantity"
+          type="button"
+        >
+          incrementar
+        </button>
+        <span>{ `R$${price * quantity}` }</span>
       </div>
     );
   }
 }
+
+ItemShopCart.propTypes = {
+  item: PropTypes.shape({
+    thumbnail: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  addQuantity: PropTypes.func.isRequired,
+  subQuantity: PropTypes.func.isRequired,
+};

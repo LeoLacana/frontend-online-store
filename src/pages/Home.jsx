@@ -36,7 +36,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { products, query } = this.state;
+    const { products } = this.state;
     return (
       <div>
         <label htmlFor="searchInput">
@@ -56,7 +56,9 @@ export default class Home extends Component {
           Pesquisar
         </button>
         <Link data-testid="shopping-cart-button" to="/shoppingcart">
-          <button type="button">Carrinho</button>
+          <button type="button">
+            Carrinho
+          </button>
         </Link>
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
@@ -68,7 +70,6 @@ export default class Home extends Component {
             <CardProduct
               key={ product.id }
               product={ product }
-              query={ query }
             />))}
       </div>
     );

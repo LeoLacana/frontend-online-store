@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ItemShopCart from '../components/ItemShopCart';
 
 export default class ShoppingCart extends Component {
@@ -40,6 +41,7 @@ export default class ShoppingCart extends Component {
           //   <h2 data-testid="shopping-cart-product-name">{ item.title }</h2>
           // </div>
         ))}
+        <Link data-testid="checkout-products" to="/checkout"><button type="button">Finalizar Compra</button></Link>
       </div>
     ) : (
       <h2 data-testid="shopping-cart-empty-message">

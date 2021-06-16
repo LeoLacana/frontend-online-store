@@ -5,11 +5,9 @@ import { getCategories } from '../services/api';
 export default class Categories extends Component {
   constructor() {
     super();
-
     this.state = {
       loading: true,
     };
-
     this.fetchCategory = this.fetchCategory.bind(this);
   }
 

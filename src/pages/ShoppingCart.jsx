@@ -4,19 +4,13 @@ import PropTypes from 'prop-types';
 export default class ShoppingCart extends Component {
   constructor() {
     super();
-    this.state = {
-      bougthtems: [],
-    };
+    
   }
 
   componentDidMount() {
 
   }
-  receiveBougthItems() {
-    const { items } = this.props /*verificar nome item com o pessoal que fez a 7 e a 9 */
-    this.setState( { boughtItems: items }) /*verificar nome item com o pessoal que fez a 7 e a 9 */
-  }
-  
+
   render() {
     const { cart } = this.props;
     return cart.length > 0 ? (

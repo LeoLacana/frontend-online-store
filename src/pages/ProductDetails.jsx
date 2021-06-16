@@ -30,6 +30,8 @@ export default class ProductDetails extends Component {
   render() {
     const { loading, product } = this.state;
     const { thumbnail, price, title, tags } = product;
+    const numbersOfStars = 5;
+    const stars = Array(numbersOfStars).fill(0);
     return loading ? (<h3>loading...</h3>) : (
       <div>
         <h1 data-testid="product-detail-name">{ `${title} - R$ ${price}` }</h1>
@@ -40,6 +42,9 @@ export default class ProductDetails extends Component {
             {tags.map((element) => (<li key={ element }>{ element }</li>))}
           </ul>
         </label>
+        <textarea data-testid="product-detail-evaluation" />
+        <button type="button">Submit</button>
+        {stars.map((value, index) => (<span key={ value }>{index + 1}</span>))}
       </div>
     );
   }

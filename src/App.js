@@ -17,12 +17,33 @@ class App extends React.Component {
     this.addQuantity = this.addQuantity.bind(this);
   }
 
+  componentDidMount() {
+    if (localStorage.getItem('cartCache')) {
+      this.getLocalStorage();
+    }
+  }
+
+  getLocalStorage() {
+    const storage = JSON.parse(localStorage.getItem('cartCache'));
+    this.setState({
+      cart: storage,
+    });
+  }
+
+  setStorage() {
+    const { cart } = this.state;
+    localStorage.setItem('cartCache', JSON.stringify(cart));
+    console.log(JSON.parse(localStorage.getItem('cartCache')));
+  }
+
   addToCart(newItem) {
     const { cart } = this.state;
     const quantity = cart.filter((item) => item === newItem).length;
     if (newItem.available_quantity > quantity) {
       this.setState({
         cart: [...cart, newItem],
+      }, () => {
+        this.setStorage();
       });
     }
   }
@@ -33,6 +54,8 @@ class App extends React.Component {
     if (product.available_quantity > quantity) {
       this.setState({
         cart: [...cart, product],
+      }, () => {
+        this.setStorage();
       });
     }
   }
@@ -44,6 +67,8 @@ class App extends React.Component {
       i === index ? acum : acum.concat(curr)), []);
     this.setState({
       cart: newCart,
+    }, () => {
+      this.setStorage();
     });
   }
 
@@ -84,5 +109,7 @@ class App extends React.Component {
     );
   }
 }
+
+// !FINALIZADO
 
 export default App;

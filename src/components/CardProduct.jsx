@@ -21,6 +21,9 @@ export default class CardProduct extends Component {
             </p>
           </div>
         </Link>
+        { product.shipping.free_shipping
+          ? <p data-testid="free-shipping">Frete grátis</p>
+          : null }
         <button
           data-testid="product-add-to-cart"
           onClick={ () => addToCart(product) }
@@ -40,6 +43,9 @@ CardProduct.propTypes = {
     thumbnail: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     category_id: PropTypes.string.isRequired,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool.isRequired,
+    }),
   }).isRequired,
   query: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,

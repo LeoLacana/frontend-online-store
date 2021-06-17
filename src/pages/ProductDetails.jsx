@@ -36,6 +36,9 @@ export default class ProductDetails extends Component {
 
   render() {
     const { loading, product } = this.state;
+    if (!loading) {
+      console.log(product.shipping.free_shipping);
+    }
     const { cart } = this.props;
     const { thumbnail, price, title, tags } = product;
     const numbersOfStars = 5;
@@ -58,6 +61,9 @@ export default class ProductDetails extends Component {
         <textarea data-testid="product-detail-evaluation" />
         <button type="button">Submit</button>
         {stars.map((value, index) => (<span key={ value }>{index + 1}</span>))}
+        { product.shipping.free_shipping
+          ? <p data-testid="free-shipping">Frete grátis</p>
+          : null }
         <button
           type="button"
           data-testid="product-detail-add-to-cart"

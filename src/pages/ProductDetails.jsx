@@ -71,13 +71,11 @@ export default class ProductDetails extends Component {
         >
           Adicionar ao carrinho
         </button>
-        {/* <h4 data-testid="shopping-cart-size">{cart.length}</h4> */}
         <Link data-testid="shopping-cart-button" to="/shoppingcart">
           <button type="button">
             Carrinho
           </button>
         </Link>
-        {/* <h4 data-testid="shopping-cart-size">{cart.length}</h4> */}
       </div>
     );
   }

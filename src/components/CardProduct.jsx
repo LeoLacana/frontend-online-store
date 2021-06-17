@@ -50,7 +50,3 @@ CardProduct.propTypes = {
   query: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired,
 };
-
-// CardProduct.defaultProps = {
-//   query: '',
-// };

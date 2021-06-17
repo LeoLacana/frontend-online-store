@@ -17,15 +17,13 @@ export default class Home extends Component {
 
   handleChange({ target }) {
     const { name, value } = target;
-    if (name === 'category') {
-      this.setState({
-        [name]: value,
-      }, () => this.searchProducts());
-    } else {
-      this.setState({
-        [name]: value,
-      });
-    }
+    this.setState({
+      [name]: value,
+    }, () => {
+      if (name === 'category') {
+        this.searchProducts();
+      }
+    });
   }
 
   async searchProducts() {

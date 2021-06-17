@@ -20,16 +20,22 @@ class App extends React.Component {
   addToCart(newItem) {
     const { cart } = this.state;
     // if (cart.includes(newItem)) return null;
-    this.setState({
-      cart: [...cart, newItem],
-    });
+    const quantity = cart.filter((item) => item === newItem).length;
+    if (newItem.available_quantity > quantity) {
+      this.setState({
+        cart: [...cart, newItem],
+      });
+    }
   }
 
   addQuantity(product) {
     const { cart } = this.state;
-    this.setState({
-      cart: [...cart, product],
-    });
+    const quantity = cart.filter((item) => item === product).length;
+    if (product.available_quantity > quantity) {
+      this.setState({
+        cart: [...cart, product],
+      });
+    }
   }
 
   subQuantity(product) {
@@ -48,7 +54,15 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={ () => <Home addToCart={ this.addToCart } /> } />
+          <Route
+            exact
+            path="/"
+            render={ () => (
+              <Home
+                addToCart={ this.addToCart }
+                cart={ cart }
+              />) }
+          />
           <Route
             exact
             path="/shoppingcart"
@@ -63,7 +77,7 @@ class App extends React.Component {
             exact
             path="/product/:query/:category/:id"
             render={ (props) => (
-              <ProductDetails { ...props } addToCart={ this.addToCart } />
+              <ProductDetails { ...props } addToCart={ this.addToCart } cart={ cart } />
             ) }
           />
           <Route exact path="/checkout" render={ () => <Checkout /> } />

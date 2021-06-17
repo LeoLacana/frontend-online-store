@@ -19,7 +19,6 @@ class App extends React.Component {
 
   addToCart(newItem) {
     const { cart } = this.state;
-    // if (cart.includes(newItem)) return null;
     const quantity = cart.filter((item) => item === newItem).length;
     if (newItem.available_quantity > quantity) {
       this.setState({
@@ -43,7 +42,6 @@ class App extends React.Component {
     const index = cart.indexOf(product);
     const newCart = cart.reduce((acum, curr, i) => (
       i === index ? acum : acum.concat(curr)), []);
-    console.log(newCart);
     this.setState({
       cart: newCart,
     });

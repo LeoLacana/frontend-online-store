@@ -38,7 +38,7 @@ export default class Home extends Component {
 
   render() {
     const { products } = this.state;
-    const { addToCart } = this.props;
+    const { addToCart, cart } = this.props;
     return (
       <div>
         <label htmlFor="searchInput">
@@ -62,6 +62,7 @@ export default class Home extends Component {
             Carrinho
           </button>
         </Link>
+        <h4 data-testid="shopping-cart-size">{cart.length}</h4>
         <h2 data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </h2>
@@ -81,4 +82,5 @@ export default class Home extends Component {
 
 Home.propTypes = {
   addToCart: PropTypes.func.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

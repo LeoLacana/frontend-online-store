@@ -28,7 +28,7 @@ export default class ShoppingCart extends Component {
     const { cart, addQuantity, subQuantity } = this.props;
     return filteredCart.length > 0 ? (
       <div>
-        <h4>{filteredCart.length}</h4>
+        <h4 data-testid="shopping-cart-size">{cart.length}</h4>
         {filteredCart.map((item) => (
           <ItemShopCart
             item={ item }
@@ -37,9 +37,6 @@ export default class ShoppingCart extends Component {
             subQuantity={ subQuantity }
             key={ item.id }
           />
-          // <div key={ item.id }>
-          //   <h2 data-testid="shopping-cart-product-name">{ item.title }</h2>
-          // </div>
         ))}
         <Link
           data-testid="checkout-products"

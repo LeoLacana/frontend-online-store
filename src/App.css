@@ -15,6 +15,56 @@
 
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+}
+
+.paths{
+  display: flex;
+  flex-direction: row;
+  margin: 4px 4px;
+  justify-content: center; 
+  align-items: center;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.shopping-cart-button {
+  padding: 0px 10px;
+  text-align: center;
+  font-size: small;
+}
+
+.search-button {
+
+}
+
+.search-bar-div {
+  padding: 0px 10px;
+  text-align: center;
+  font-size: small;
+}
+.search-bar-div input {
+  width: 800px;
+}
+
+.main {
+  flex-direction: column;
+}
+
 .App-header {
   align-items: center;
   background-color: #282c34;
@@ -29,6 +79,8 @@
 .App-link {
   color: #61dafb;
 }
+
+
 
 @keyframes App-logo-spin {
 

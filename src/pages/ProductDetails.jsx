@@ -36,9 +36,6 @@ export default class ProductDetails extends Component {
 
   render() {
     const { loading, product } = this.state;
-    if (!loading) {
-      console.log(product.shipping.free_shipping);
-    }
     const { cart } = this.props;
     const { thumbnail, price, title, tags } = product;
     const numbersOfStars = 5;

@@ -13,8 +13,8 @@ export default class CardProduct extends Component {
           to={ `/product/${query}/${categoryId}/${id}` }
         >
           <div data-testid="product">
-            <h3>{ title }</h3>
             <img src={ thumbnail } alt={ title } />
+            <p>{ title }</p>
             <p>
               R$
               { price }

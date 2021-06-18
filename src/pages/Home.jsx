@@ -59,7 +59,7 @@ export default class Home extends Component {
             <label htmlFor="searchInput">
               <input
                 type="text"
-                placeholder="Digite aki!"
+                placeholder="Digite seu produto"
                 id="searchInput"
                 name="query"
                 onChange={ this.handleChange }
@@ -80,19 +80,21 @@ export default class Home extends Component {
             </button>
           </div>
         </div>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
         <div className="main">
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          { <Categories handleChange={ this.handleChange } /> }
-          {!products
-            ? null
-            : products.map((product) => (
-              <CardProduct
-                key={ product.id }
-                product={ product }
-                addToCart={ addToCart }
-              />))}
+          <Categories handleChange={ this.handleChange } />
+          <div className="product-item">
+            {!products
+              ? null
+              : products.map((product) => (
+                <CardProduct
+                  key={ product.id }
+                  product={ product }
+                  addToCart={ addToCart }
+                />))}
+          </div>
         </div>
       </div>
     );

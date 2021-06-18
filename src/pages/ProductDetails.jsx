@@ -36,11 +36,8 @@ export default class ProductDetails extends Component {
 
   render() {
     const { loading, product } = this.state;
-    if (!loading) {
-      console.log(product.shipping.free_shipping);
-    }
     const { cart } = this.props;
-    const { thumbnail, price, title, tags } = product;
+    const { thumbnail, price, title, attributes } = product;
     const numbersOfStars = 5;
     const stars = Array(numbersOfStars).fill(0);
     return loading ? (
@@ -55,12 +52,15 @@ export default class ProductDetails extends Component {
         <label htmlFor="details">
           O que você precisa saber sobre este produto
           <ul>
-            {tags.map((element) => (<li key={ element }>{ element }</li>))}
+            {attributes.filter(({ name, value_name: value }) => name.toUpperCase()
+              !== 'UNDEFINED' && value.toUpperCase() !== 'UNDEFINED')
+              .map(({ name, value_name: value }, i) => (
+                <li key={ i }>{ `${name} : ${value}`}</li>))}
           </ul>
         </label>
         <textarea data-testid="product-detail-evaluation" />
         <button type="button">Submit</button>
-        {stars.map((value, index) => (<span key={ value }>{index + 1}</span>))}
+        {stars.map((_value, index) => (<span key={ index }>{index + 1}</span>))}
         { product.shipping.free_shipping
           ? <p data-testid="free-shipping">Frete grátis</p>
           : null }

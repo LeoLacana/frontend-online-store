@@ -33,11 +33,11 @@ class App extends React.Component {
   setStorage() {
     const { cart } = this.state;
     localStorage.setItem('cartCache', JSON.stringify(cart));
-    console.log(JSON.parse(localStorage.getItem('cartCache')));
   }
 
   addToCart(newItem) {
     const { cart } = this.state;
+    // if (cart.some((item) => item.title === newItem.title)) return null;
     const quantity = cart.filter((item) => item === newItem).length;
     if (newItem.available_quantity > quantity) {
       this.setState({

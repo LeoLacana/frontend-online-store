@@ -47,6 +47,10 @@ CardProduct.propTypes = {
       free_shipping: PropTypes.bool.isRequired,
     }),
   }).isRequired,
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
+};
+
+CardProduct.defaultProps = {
+  query: undefined,
 };

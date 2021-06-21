@@ -17,8 +17,8 @@
 
 * {
   margin: 0px;
-  padding: 0px;
   background-color: #e5e5e5;
+  padding: 0px;
 }
 
 .main-container {
@@ -29,8 +29,8 @@
 .paths{
   display: flex;
   flex-direction: row;
-  margin: 4px 4px;
   justify-content: center; 
+  margin: 4px 4px;
   align-items: center;
 }
 
@@ -44,8 +44,8 @@ button:hover {
 
 .shopping-cart-button {
   padding: 0px 10px;
-  text-align: center;
   font-size: small;
+  text-align: center;
 }
 
 .product-item div  {
@@ -55,8 +55,8 @@ button:hover {
 
 .search-bar-div {
   padding: 0px 10px;
-  text-align: center;
   font-size: small;
+  text-align: center;
 }
 .search-bar-div input {
   width: 800px;

@@ -15,6 +15,65 @@
 
 }
 
+* {
+  background-color: #e5e5e5;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.paths {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 4px;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.shopping-cart-button {
+  font-size: small;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.product-item div {
+  padding: 10px;
+  width: 400px;
+}
+
+.search-bar-div {
+  font-size: small;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.search-bar-div input {
+  width: 800px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-item {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .App-header {
   align-items: center;
   background-color: #282c34;
